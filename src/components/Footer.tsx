@@ -59,8 +59,8 @@ const Footer = () => {
             © {currentYear} ToA Kitchen & Bathroom Installations. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <button className="hover:text-foreground transition-colors">Privacy Policy</button>
-            <button className="hover:text-foreground transition-colors">Terms of Service</button>
+            {/* <button className="hover:text-foreground transition-colors">Privacy Policy</button> */}
+            {/* <button className="hover:text-foreground transition-colors">Terms of Service</button> */}
           </div>
         </div>
       </div>

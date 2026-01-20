@@ -23,13 +23,6 @@ const InstagramGallery = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center mx-auto mb-6">
               <Instagram className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-display text-2xl text-foreground mb-4">
-              Instagram Gallery
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              To display your Instagram feed, you can integrate services like Elfsight or Behold.so 
-              using their embed code below.
-            </p>
             
             {/* Elfsight Instagram Feed */}
             <div 

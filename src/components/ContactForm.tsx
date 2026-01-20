@@ -21,21 +21,37 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+      }),
     });
 
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: '',
-    });
+    const result = await response.json();
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: '', email: '', phone: '', service: '', message: '', });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+      });
+    }
     setIsSubmitting(false);
   };
 
@@ -57,7 +73,7 @@ const ContactForm = () => {
             </p>
 
             <div className="space-y-6 mb-10">
-              <a href="tel:+441onal" className="flex items-center gap-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <a href="tel:+447590060553" className="flex items-center gap-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-accent" />
                 </div>
@@ -81,14 +97,14 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/60">Service area</p>
-                  <p className="font-medium">Local & surrounding areas</p>
+                  <p className="font-medium">Rochester, Gillingham, Tunbridge Wells, Maidstone, Gravesend · UK</p>
                 </div>
               </div>
             </div>
 
             {/* Reviews Link */}
             <a
-              href="https://g.page/r/CVINYe_1Jfo5EBM/review"
+              href="https://g.page/r/CVINYe_1Jfo5EBM"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-primary-foreground/10 hover:bg-primary-foreground/15 rounded-lg px-6 py-4 transition-colors"
