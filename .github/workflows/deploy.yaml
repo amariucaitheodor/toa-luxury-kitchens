@@ -2,28 +2,39 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # Runs every time you push to main
+    branches: [main]
 
+# Grant permission to the automatic GITHUB_TOKEN to write to the repo
 permissions:
-  contents: write # Needed to push the build to the gh-pages branch
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
         env:
-          # This pulls the secret you saved in GitHub Settings
-          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }} 
+          # This "bakes" your secret into the code during the build
+          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Automatically generated
-          publish_dir: ./dist # Vite outputs the website here
+          # This token is automatically provided by GitHub
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Vite outputs the finished site to the 'dist' folder
+          publish_dir: ./dist
+          # Preserves your custom domain setting
+          cname: toainstallations.co.uk
