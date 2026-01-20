@@ -20,9 +20,6 @@ const InstagramGallery = () => {
         {/* Instagram Embed Placeholder */}
         <div className="max-w-4xl mx-auto">
           <div className="bg-background rounded-lg p-8 md:p-12 text-center border border-border">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center mx-auto mb-6">
-              <Instagram className="w-8 h-8 text-primary" />
-            </div>
             
             {/* Elfsight Instagram Feed */}
             <div 

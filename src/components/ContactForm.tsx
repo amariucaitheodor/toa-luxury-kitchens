@@ -79,7 +79,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/60">Call us</p>
-                  <p className="font-medium">Contact via form</p>
+                  <p className="font-medium">+447590060553</p>
                 </div>
               </a>
               <a href="mailto:toainstallations@gmail.com" className="flex items-center gap-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
@@ -97,7 +97,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/60">Service area</p>
-                  <p className="font-medium">Rochester, Gillingham, Tunbridge Wells, Maidstone, Gravesend · UK</p>
+                  <p className="font-medium">UK · Rochester, Gillingham, Tunbridge Wells, Maidstone, Gravesend</p>
                 </div>
               </div>
             </div>
