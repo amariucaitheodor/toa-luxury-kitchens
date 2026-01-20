@@ -31,13 +31,11 @@ const InstagramGallery = () => {
               using their embed code below.
             </p>
             
-            {/* Elfsight Widget Placeholder - Replace the div below with actual embed code */}
-            <div className="bg-muted/50 rounded-lg p-8 mb-8 border-2 border-dashed border-border">
-              <p className="text-sm text-muted-foreground">
-                Add your Elfsight or Behold.so embed code here<br />
-                <span className="text-xs">(e.g., &lt;script src="https://apps.elfsight.com/..."&gt;&lt;/script&gt;)</span>
-              </p>
-            </div>
+            {/* Elfsight Instagram Feed */}
+            <div 
+              className="elfsight-app-f6765a44-20fa-47bb-a206-79786ecd4b6d" 
+              data-elfsight-app-lazy 
+            />
 
             <a
               href="https://www.instagram.com/toa_kbb_installations"
