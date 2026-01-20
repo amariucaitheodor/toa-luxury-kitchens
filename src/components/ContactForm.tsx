@@ -16,43 +16,41 @@ const ContactForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        message: formData.message,
-      }),
-    });
+    // This must match the name in your GitHub Secrets
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
 
-    const result = await response.json();
-
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      setFormData({ name: '', email: '', phone: '', service: '', message: '', });
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-      });
+    if (!accessKey) {
+      console.error("Web3Forms Access Key is missing!");
+      setIsSubmitting(false);
+      return;
     }
-    setIsSubmitting(false);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", accessKey);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        toast({ title: "Success!", description: "Message sent." });
+        e.currentTarget.reset();
+      } else {
+        console.log("Web3Forms Error:", data);
+      }
+    } catch (err) {
+      console.error("Submit error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
