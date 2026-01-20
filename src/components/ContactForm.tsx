@@ -21,7 +21,8 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // This must match the name in your GitHub Secrets
+    // 1. Capture the form element IMMEDIATELY
+    const form = e.currentTarget; 
     const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
 
     if (!accessKey) {
@@ -30,7 +31,7 @@ const ContactForm = () => {
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     formData.append("access_key", accessKey);
 
     try {
@@ -42,7 +43,11 @@ const ContactForm = () => {
       const data = await response.json();
       if (data.success) {
         toast({ title: "Success!", description: "Message sent." });
-        e.currentTarget.reset();
+        
+        // 2. Use the captured variable instead of e.target
+        form.reset(); 
+        
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       } else {
         console.log("Web3Forms Error:", data);
       }
