@@ -66,13 +66,13 @@ const ContactForm = () => {
                   <p className="font-medium">Contact via form</p>
                 </div>
               </a>
-              <a href="mailto:info@toakbb.com" className="flex items-center gap-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <a href="mailto:toainstallations@gmail.com" className="flex items-center gap-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/60">Email us</p>
-                  <p className="font-medium">info@toakbb.com</p>
+                  <p className="font-medium">toainstallations@gmail.com</p>
                 </div>
               </a>
               <div className="flex items-center gap-4 text-primary-foreground/80">
