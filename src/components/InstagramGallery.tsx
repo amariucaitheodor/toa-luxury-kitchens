@@ -19,13 +19,13 @@ const InstagramGallery = () => {
 
         {/* Instagram Embed Placeholder */}
         <div className="max-w-4xl mx-auto">
+          <div className="bg-background rounded-lg p-8 md:p-12 text-center border border-border">
             {/* Elfsight Instagram Feed */}
             <div 
               className="elfsight-app-f6765a44-20fa-47bb-a206-79786ecd4b6d" 
               data-elfsight-app-lazy 
             />
 
-          <div className="bg-background rounded-lg p-8 md:p-12 text-center border border-border">
             <a
               href="https://www.instagram.com/toa_kbb_installations"
               target="_blank"
